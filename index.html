@@ -1933,10 +1933,6 @@
 
       if (authEl) {
         authEl.innerHTML = `
-          <span class="badge ${state.apiConnected ? 'badge-free' : 'badge-past'}" title="Status koneksi backend PHP + MySQL">
-            ${state.apiConnected ? '● MySQL Terhubung' : '○ Mode Lokal'}
-          </span>
-          <button type="button" class="btn btn-gold btn-sm" onclick="exportAdminCSV()">Ekspor CSV</button>
           <button type="button" class="role-chip" onclick="logoutUser()" title="Keluar dari Panel Admin">Admin - Out</button>
         `;
       }
@@ -2559,38 +2555,7 @@
     }
 
     return `
-      <section class="section wrap" style="padding-top:24px;">
-        <div class="kpi-grid">
-          <div class="kpi-card">
-            <span style="font-size:0.72rem;color:#64748B;text-transform:uppercase;font-weight:700;">Kehadiran Gate (Scan QR)</span>
-            <div class="kpi-val">${checkedInCount} / ${state.tickets.length}</div>
-            <span style="font-size:0.75rem;color:var(--tosca);">Tiket &amp; Tenant Tervalidasi</span>
-          </div>
-          <div class="kpi-card gold">
-            <span style="font-size:0.72rem;color:#64748B;text-transform:uppercase;font-weight:700;">Total Kas Masuk</span>
-            <div class="kpi-val" style="color:var(--gold);">${formatRupiah(totalRevenue)}</div>
-            <span style="font-size:0.75rem;color:#64748B;">${state.apiConnected ? 'Sinkron MySQL Real-Time' : 'Mode Offline Lokal'}</span>
-          </div>
-          <div class="kpi-card">
-            <span style="font-size:0.72rem;color:#64748B;text-transform:uppercase;font-weight:700;">Total Event &amp; Gallery</span>
-            <div class="kpi-val">${state.events.length} / ${state.galleryItems.length}</div>
-            <span style="font-size:0.75rem;color:#64748B;">CRUD Aktif</span>
-          </div>
-          <div class="kpi-card crimson">
-            <span style="font-size:0.72rem;color:#64748B;text-transform:uppercase;font-weight:700;">Booth Tenant UMKM</span>
-            <div class="kpi-val">${tenantBookings.length} Booth</div>
-            <span style="font-size:0.75rem;color:var(--tosca);">Slot Terkunci Otomatis</span>
-          </div>
-        </div>
-
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;">
-          <button type="button" class="btn ${state.adminSubTab === 'scanner' ? 'btn-tosca' : 'btn-ghost'} btn-sm" onclick="setAdminSubTab('scanner')">📷 Scan QR Gate</button>
-          <button type="button" class="btn ${state.adminSubTab === 'events' ? 'btn-tosca' : 'btn-ghost'} btn-sm" onclick="setAdminSubTab('events')">📅 Kelola Event (${state.events.length})</button>
-          <button type="button" class="btn ${state.adminSubTab === 'transactions' ? 'btn-tosca' : 'btn-ghost'} btn-sm" onclick="setAdminSubTab('transactions')">🎟️ Rekap Tiket (${visitorTickets.length})</button>
-          <button type="button" class="btn ${state.adminSubTab === 'tenants' ? 'btn-tosca' : 'btn-ghost'} btn-sm" onclick="setAdminSubTab('tenants')">🏪 Data Tenant (${tenantBookings.length})</button>
-          <button type="button" class="btn ${state.adminSubTab === 'gallery' ? 'btn-tosca' : 'btn-ghost'} btn-sm" onclick="setAdminSubTab('gallery')">🖼️ Gallery (${state.galleryItems.length})</button>
-        </div>
-
+      <section class="section wrap" style="padding-top:16px;">
         ${tabBody}
       </section>
     `;
